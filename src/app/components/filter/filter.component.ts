@@ -28,6 +28,8 @@ export class FilterComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy),
         debounceTime(300),
       ).subscribe((value: string) => this.onFilterChanges.emit(value))
+
+    this.formControl.setValue('bat') // set to obtain initial data
   }
 
   ngOnDestroy(): void {

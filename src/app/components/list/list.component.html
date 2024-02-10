@@ -32,6 +32,12 @@
     </td>
   </ng-container>
 
+  <tr *matNoDataRow>
+    <td [attr.colspan]="displayedColumns.length" [ngClass]="{'table-loader': (isLoading$ | async)}">
+      {{ (isLoading$ | async) ? '' : 'No se ha encontrado heroes' }}
+    </td>
+  </tr>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
