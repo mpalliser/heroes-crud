@@ -1,3 +1,4 @@
+@if (dataSource) {
 <table mat-table [dataSource]="dataSource">
 
   <!-- Title Column -->
@@ -12,6 +13,14 @@
     <td mat-cell *matCellDef="let row">{{row.name}}</td>
   </ng-container>
 
+  <!-- State Column -->
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let row">
+      <img [ngSrc]="row.image?.url" width="90" height="110" priority="true">
+    </td>
+  </ng-container>
+
   <!-- Created Actions -->
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>
@@ -23,8 +32,15 @@
     </td>
   </ng-container>
 
+  <tr *matNoDataRow>
+    <td [attr.colspan]="displayedColumns.length" [ngClass]="{'table-loader': (isLoading$ | async)}">
+      {{ (isLoading$ | async) ? '' : 'No se ha encontrado heroes' }}
+    </td>
+  </tr>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<mat-paginator [length]="dataSource.data.length" [pageSize]="5" aria-label="Select page of results"></mat-paginator>
+<mat-paginator [length]="dataSource.data.length" [pageSize]="7" aria-label="Select page of results"></mat-paginator>
+}

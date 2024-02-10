@@ -1,4 +1,9 @@
+export interface HeroeImmage {
+  url: string;
+}
+
 export interface Heroe {
-  id: number;
+  id: string;
   name: string;
+  image: HeroeImmage;
 }
