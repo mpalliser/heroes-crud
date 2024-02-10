@@ -17,7 +17,7 @@ export class HeroesComponent {
   public heroes: Heroe[] = []
 
   constructor(private heroeService: HeroeService) {
-    this.filterHeroes('')
+    this.filterHeroes('man')
   }
 
   filterHeroes(filter: string): void {
