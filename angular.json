@@ -20,6 +20,7 @@
             "outputPath": "dist/heroes-crud",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/heroes/",
             "polyfills": [
               "zone.js"
             ],
