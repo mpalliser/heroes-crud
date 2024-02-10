@@ -18,7 +18,7 @@ import {
 export class FilterComponent implements OnInit, OnDestroy {
   public formControl = new FormControl<string>('', { nonNullable: true })
 
-  @Output() onFilter = new EventEmitter<string>()
+  @Output() onFilterChanges = new EventEmitter<string>()
 
   private destroy = new Subject<void>()
 
@@ -26,9 +26,9 @@ export class FilterComponent implements OnInit, OnDestroy {
     this.formControl.valueChanges
       .pipe(
         takeUntil(this.destroy),
-        filter((value: string) => !!value),
+        filter((value: string) => !!value && value.length > 2),
         debounceTime(300),
-      ).subscribe((value: string) => this.onFilter.emit(value))
+      ).subscribe((value: string) => this.onFilterChanges.emit(value))
   }
 
   ngOnDestroy(): void {
