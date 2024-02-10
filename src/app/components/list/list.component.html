@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="data">
+<table mat-table [dataSource]="dataSource">
 
   <!-- Title Column -->
   <ng-container matColumnDef="id">
@@ -26,3 +26,5 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<mat-paginator [length]="dataSource.data.length" [pageSize]="5" aria-label="Select page of results"></mat-paginator>
