@@ -1,0 +1,30 @@
+<table mat-table [dataSource]="dataSource">
+
+  <!-- Title Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let row">{{row.id}}</td>
+  </ng-container>
+
+  <!-- State Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let row">{{row.name}}</td>
+  </ng-container>
+
+  <!-- Created Actions -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>
+      Acciones
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-icon class="color-info">edit</mat-icon>
+      <mat-icon class="color-delete">delete</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [length]="dataSource.data.length" [pageSize]="5" aria-label="Select page of results"></mat-paginator>
