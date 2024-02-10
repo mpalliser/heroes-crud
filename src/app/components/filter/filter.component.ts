@@ -2,11 +2,11 @@ import {
   Component, EventEmitter, OnDestroy, OnInit, Output,
 } from '@angular/core'
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { MatInputModule } from '@angular/material/input'
-import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
+import { MatIconModule } from '@angular/material/icon'
+import { MatInputModule } from '@angular/material/input'
 import {
-  Subject, debounceTime, filter, takeUntil,
+  Subject, debounceTime, takeUntil,
 } from 'rxjs'
 
 @Component({
@@ -26,7 +26,6 @@ export class FilterComponent implements OnInit, OnDestroy {
     this.formControl.valueChanges
       .pipe(
         takeUntil(this.destroy),
-        filter((value: string) => !!value && value.length > 2),
         debounceTime(300),
       ).subscribe((value: string) => this.onFilterChanges.emit(value))
   }
