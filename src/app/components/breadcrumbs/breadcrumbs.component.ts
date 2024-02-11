@@ -10,5 +10,5 @@ import { ActivatedRoute, RouterModule } from '@angular/router'
 })
 export class BreadcrumbsComponent {
   // eslint-disable-next-line dot-notation
-  public readonly breadcrumbs = inject(ActivatedRoute).snapshot.data?.['breadcrumbs']
+  public readonly breadcrumbs = inject(ActivatedRoute).snapshot.data?.['breadcrumbs'] // typescript forced me to do this :D
 }
