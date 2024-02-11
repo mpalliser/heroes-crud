@@ -20,12 +20,7 @@ import { Heroe } from '../../models/heroe'
 export class FormComponent {
   public formGroup!: FormGroup
 
-  public isEdit = false
-
   @Input() set heroe(heroe: Heroe) {
-    if (heroe) {
-      this.isEdit = true
-    }
     this.initForm(heroe)
   }
 
@@ -39,6 +34,7 @@ export class FormComponent {
 
   private initForm(heroe?: Heroe): void {
     this.formGroup = this.formBuilder.group({
+      id: [heroe?.id ?? null],
       name: [heroe?.name ?? ''],
       'eye-color': [heroe?.appearance['eye-color'] ?? ''],
       'hair-color': [heroe?.appearance['hair-color'] ?? ''],

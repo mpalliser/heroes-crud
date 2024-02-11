@@ -51,4 +51,4 @@
 
 </form>
 
-<button mat-raised-button (click)="submit()">{{ isEdit ? 'Modificar' : 'Crear' }}</button>
+<button mat-raised-button (click)="submit()">{{ formGroup.get('id')?.value ? 'Modificar' : 'Crear' }}</button>

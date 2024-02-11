@@ -15,18 +15,18 @@
 
   <!-- State Column -->
   <ng-container matColumnDef="image">
-    <th mat-header-cell *matHeaderCellDef></th>
+    <th mat-header-cell *matHeaderCellDef>Foto</th>
     <td mat-cell *matCellDef="let row">
-      <img [ngSrc]="row.image?.url" width="90" height="110" priority="true">
+      <img [ngSrc]="row.image?.url" width="60" height="90" priority="true">
     </td>
   </ng-container>
 
   <!-- Created Actions -->
   <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>
+    <th mat-header-cell *matHeaderCellDef class="header-align-right">
       Acciones
     </th>
-    <td mat-cell *matCellDef="let row">
+    <td mat-cell *matCellDef="let row" class="header-align-right">
       <button mat-icon-button (click)="onClickEdit.emit(row.id)">
         <mat-icon class="color-info">edit</mat-icon>
       </button>
@@ -37,8 +37,9 @@
   </ng-container>
 
   <tr *matNoDataRow>
-    <td [attr.colspan]="displayedColumns.length" [ngClass]="{'table-loader': (isLoading$ | async)}">
-      {{ (isLoading$ | async) ? '' : 'No se ha encontrado heroes' }}
+    <td [attr.colspan]="displayedColumns.length" class="p-2 has-text-centered	"
+      [ngClass]="{'table-loader': (isLoading$ | async)}">
+      {{ (isLoading$ | async) ? '' : 'No se ha encontrado heroes.' }}
     </td>
   </tr>
 
