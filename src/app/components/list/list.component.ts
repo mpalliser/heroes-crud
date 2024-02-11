@@ -17,9 +17,9 @@ import { LoadingService } from '../../services/loading.service'
   styleUrl: './list.component.sass',
 })
 export class ListComponent implements AfterViewInit {
-  public displayedColumns: string[] = ['id', 'name', 'image', 'actions']
+  public readonly displayedColumns: string[] = ['id', 'name', 'image', 'actions']
 
-  public dataSource = new MatTableDataSource<Heroe>()
+  public readonly dataSource = new MatTableDataSource<Heroe>()
 
   public readonly isLoading$ = inject(LoadingService).isLoading
 

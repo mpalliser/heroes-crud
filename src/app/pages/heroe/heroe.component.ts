@@ -16,22 +16,17 @@ import { BreadcrumbsComponent } from '../../components/breadcrumbs/breadcrumbs.c
   styleUrl: './heroe.component.sass',
 })
 export class HeroeComponent implements OnInit {
-  public title: string | undefined = inject(ActivatedRoute).snapshot.title
+  public readonly title: string | undefined = inject(ActivatedRoute).snapshot.title
 
   public heroe!: Heroe
 
-  private id: string | null = inject(ActivatedRoute).snapshot.paramMap.get('id')
+  private readonly id: string | null = inject(ActivatedRoute).snapshot.paramMap.get('id')
 
-  private heroeService = inject(HeroeService)
+  private readonly heroeService = inject(HeroeService)
 
   private readonly snackBar = inject(MatSnackBar)
 
-  private router = inject(Router)
-  // private readonly route = inject(ActivatedRoute).snapshot.paramMap.get('id')
-
-  public goToHeroes(): void {
-    this.router.navigate([''])
-  }
+  private readonly router = inject(Router)
 
   ngOnInit(): void {
     if (this.id) {
@@ -39,6 +34,10 @@ export class HeroeComponent implements OnInit {
         this.heroe = heroe
       })
     }
+  }
+
+  public goToHeroes(): void {
+    this.router.navigate([''])
   }
 
   public onCreate(formValue: unknown): void {

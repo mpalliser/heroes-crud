@@ -16,11 +16,11 @@ import {
   templateUrl: 'filter.component.html',
 })
 export class FilterComponent implements OnInit, OnDestroy {
-  public formControl = new FormControl<string>('', { nonNullable: true })
+  public readonly formControl = new FormControl<string>('', { nonNullable: true })
 
   @Output() onFilterChanges = new EventEmitter<string>()
 
-  private destroy = new Subject<void>()
+  private readonly destroy = new Subject<void>()
 
   ngOnInit(): void {
     this.formControl.valueChanges
