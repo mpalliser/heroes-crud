@@ -4,7 +4,9 @@ import {
   Output,
   inject,
 } from '@angular/core'
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
+import {
+  FormBuilder, FormGroup, ReactiveFormsModule, Validators,
+} from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
@@ -15,7 +17,6 @@ import { Heroe } from '../../models/heroe'
   standalone: true,
   imports: [CommonModule, MatInputModule, ReactiveFormsModule, MatButtonModule, MatIconModule],
   templateUrl: './form.component.html',
-  styleUrl: './form.component.sass',
 })
 export class FormComponent {
   public formGroup!: FormGroup
@@ -34,13 +35,13 @@ export class FormComponent {
 
   private initForm(heroe?: Heroe): void {
     this.formGroup = this.formBuilder.group({
-      id: [heroe?.id ?? null],
-      name: [heroe?.name ?? ''],
-      'eye-color': [heroe?.appearance['eye-color'] ?? ''],
-      'hair-color': [heroe?.appearance['hair-color'] ?? ''],
-      height: [heroe?.appearance.height[1] ?? ''],
-      race: [heroe?.appearance.race ?? ''],
-      weight: [heroe?.appearance.weight[1] ?? ''],
+      id: [heroe?.id ?? null, [Validators.required]],
+      name: [heroe?.name ?? '', [Validators.required]],
+      'eye-color': [heroe?.appearance['eye-color'] ?? '', [Validators.required]],
+      'hair-color': [heroe?.appearance['hair-color'] ?? '', [Validators.required]],
+      height: [heroe?.appearance.height[1] ?? '', [Validators.required]],
+      race: [heroe?.appearance.race ?? '', [Validators.required]],
+      weight: [heroe?.appearance.weight[1] ?? '', [Validators.required]],
     })
   }
 }
