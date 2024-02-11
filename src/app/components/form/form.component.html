@@ -1,6 +1,54 @@
-<form class="example-form" [formGroup]="formGroup">
-  <mat-form-field>
+<form class="example-form" [formGroup]="formGroup" class="columns is-multiline">
+  <mat-form-field class="column is-4">
     <mat-label>Nombre</mat-label>
     <input matInput formControlName="name">
+    <button *ngIf="formGroup.get('name')?.value" mat-icon-button matSuffix (click)="formGroup.get('name')?.reset()">
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-form-field>
+
+  <mat-form-field class="column is-4">
+    <mat-label>Raza</mat-label>
+    <input matInput formControlName="race">
+    <button *ngIf="formGroup.get('race')?.value" mat-icon-button matSuffix (click)="formGroup.get('race')?.reset()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field class="column is-4">
+    <mat-label>Altura (cm)</mat-label>
+    <input matInput formControlName="height">
+    <button *ngIf="formGroup.get('height')?.value" mat-icon-button matSuffix (click)="formGroup.get('height')?.reset()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field class="column is-4">
+    <mat-label>Peso (kg)</mat-label>
+    <input matInput formControlName="weight">
+    <button *ngIf="formGroup.get('weight')?.value" mat-icon-button matSuffix (click)="formGroup.get('weight')?.reset()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field class="column is-4">
+    <mat-label>Color de ojos</mat-label>
+    <input matInput formControlName="eye-color">
+    <button *ngIf="formGroup.get('eye-color')?.value" mat-icon-button matSuffix
+      (click)="formGroup.get('eye-color')?.reset()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field class="column is-4">
+    <mat-label>Color de pelo</mat-label>
+    <input matInput formControlName="hair-color">
+    <button *ngIf="formGroup.get('hair-color')?.value" mat-icon-button matSuffix
+      (click)="formGroup.get('hair-color')?.reset()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
 </form>
+
+<button mat-raised-button (click)="create()">Crear</button>
