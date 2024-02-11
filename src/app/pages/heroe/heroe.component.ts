@@ -6,11 +6,12 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
 import { FormComponent } from '../../components/form/form.component'
 import { HeroeService } from '../../services/heroe.service'
 import { Heroe } from '../../models/heroe'
+import { BreadcrumbsComponent } from '../../components/breadcrumbs/breadcrumbs.component'
 
 @Component({
   selector: 'app-heroe',
   standalone: true,
-  imports: [FormComponent, MatIconModule, MatButtonModule, MatSnackBarModule],
+  imports: [FormComponent, MatIconModule, MatButtonModule, MatSnackBarModule, BreadcrumbsComponent],
   templateUrl: './heroe.component.html',
   styleUrl: './heroe.component.sass',
 })

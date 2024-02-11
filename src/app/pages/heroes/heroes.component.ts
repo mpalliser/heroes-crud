@@ -5,13 +5,15 @@ import { FilterComponent } from '../../components/filter/filter.component'
 import { ListComponent } from '../../components/list/list.component'
 import { Heroe } from '../../models/heroe'
 import { HeroeService } from '../../services/heroe.service'
+import { BreadcrumbsComponent } from '../../components/breadcrumbs/breadcrumbs.component'
 
 @Component({
   selector: 'app-heroes',
   standalone: true,
-  imports: [FilterComponent, ListComponent, MatButtonModule],
+  imports: [FilterComponent, ListComponent, MatButtonModule, BreadcrumbsComponent],
   template: `
     <div class="container">
+      <app-breadcrumbs></app-breadcrumbs>
       <div class="is-flex is-justify-content-space-between is-align-items-center">
         <app-filter (onFilterChanges)="filterHeroes($event)"></app-filter>
         <button mat-raised-button color="primary" (click)="goToNewHero()">Nuevo heroe</button>

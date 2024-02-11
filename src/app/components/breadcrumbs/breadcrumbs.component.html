@@ -1,0 +1,10 @@
+@for (breadcrumb of breadcrumbs; track breadcrumb; let last = $last; let first = $first) {
+@if (last) {
+/ {{ breadcrumb }}
+}
+@else if (first) {
+/ <a [routerLink]="['']">{{ breadcrumb }}</a>
+} @else {
+/ <a>{{ breadcrumb }}</a>
+}
+}
