@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common'
 import {
-  Component, Input,
+  Component, EventEmitter, Input,
+  Output,
   inject,
 } from '@angular/core'
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
@@ -19,14 +20,21 @@ import { Heroe } from '../../models/heroe'
 export class FormComponent {
   public formGroup!: FormGroup
 
+  public isEdit = false
+
   @Input() set heroe(heroe: Heroe) {
+    if (heroe) {
+      this.isEdit = true
+    }
     this.initForm(heroe)
   }
 
+  @Output() onCreateEvent = new EventEmitter<unknown>()
+
   private readonly formBuilder = inject(FormBuilder)
 
-  public create(): void {
-    console.log(this.formGroup.value)
+  public submit(): void {
+    this.onCreateEvent.emit(this.formGroup.value)
   }
 
   private initForm(heroe?: Heroe): void {
