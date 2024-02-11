@@ -49,6 +49,10 @@
     </button>
   </mat-form-field>
 
+  <div class="column is-12 is-flex is-justify-content-flex-end">
+    <button mat-raised-button [disabled]="formGroup.invalid" (click)="submit()">
+      {{ formGroup.get('id')?.value ? 'Modificar' : 'Crear' }}
+    </button>
+  </div>
 </form>
-
-<button mat-raised-button (click)="submit()">{{ formGroup.get('id')?.value ? 'Modificar' : 'Crear' }}</button>
+</form>
