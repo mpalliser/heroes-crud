@@ -1,9 +1,13 @@
 import { CommonModule } from '@angular/common'
-import { Component, OnInit, inject } from '@angular/core'
+import {
+  Component, Input,
+  inject,
+} from '@angular/core'
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
+import { Heroe } from '../../models/heroe'
 
 @Component({
   selector: 'app-form',
@@ -12,23 +16,27 @@ import { MatInputModule } from '@angular/material/input'
   templateUrl: './form.component.html',
   styleUrl: './form.component.sass',
 })
-export class FormComponent implements OnInit {
+export class FormComponent {
   public formGroup!: FormGroup
+
+  @Input() set heroe(heroe: Heroe) {
+    this.initForm(heroe)
+  }
 
   private readonly formBuilder = inject(FormBuilder)
 
-  ngOnInit(): void {
-    this.formGroup = this.formBuilder.group({
-      name: [''],
-      'eye-color': [''],
-      'hair-color': [''],
-      height: [''],
-      race: [''],
-      weight: [''],
-    })
+  public create(): void {
+    console.log(this.formGroup.value)
   }
 
-  create(): void {
-    console.log(this.formGroup.value)
+  private initForm(heroe?: Heroe): void {
+    this.formGroup = this.formBuilder.group({
+      name: [heroe?.name ?? ''],
+      'eye-color': [heroe?.appearance['eye-color'] ?? ''],
+      'hair-color': [heroe?.appearance['hair-color'] ?? ''],
+      height: [heroe?.appearance.height[1] ?? ''],
+      race: [heroe?.appearance.race ?? ''],
+      weight: [heroe?.appearance.weight[1] ?? ''],
+    })
   }
 }

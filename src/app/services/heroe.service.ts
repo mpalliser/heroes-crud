@@ -16,12 +16,16 @@ interface ApiResponse {
   providedIn: 'root',
 })
 export class HeroeService {
-  private readonly url = '/api/2315095485180488/search/'
+  private readonly url = '/api/2315095485180488/'
 
   constructor(private httpClient: HttpClient) { }
 
+  getById(id: string): Observable<Heroe> {
+    return this.httpClient.get<Heroe>(`${this.url}${id}`)
+  }
+
   filterHeroes(filter: string): Observable<Heroe[]> {
-    return this.httpClient.get<ApiResponse>(`${this.url}${filter}`).pipe(
+    return this.httpClient.get<ApiResponse>(`${this.url}search/${filter}`).pipe(
       map(data => (data.response === ApiResponseStatus.SUCCESS
         ? data.results
         : []

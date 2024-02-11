@@ -16,7 +16,7 @@ import { HeroeService } from '../../services/heroe.service'
         <app-filter (onFilterChanges)="filterHeroes($event)"></app-filter>
         <button mat-raised-button color="primary" (click)="goToNewHero()">Nuevo heroe</button>
       </div>
-      <app-list [heroes]="heroes"></app-list>
+      <app-list (onClickEdit)="goToEditHero($event)" [heroes]="heroes"></app-list>
     </div>
   `,
 })
@@ -36,5 +36,9 @@ export class HeroesComponent {
 
   public goToNewHero(): void {
     this.router.navigate(['new'])
+  }
+
+  public goToEditHero(id: string): void {
+    this.router.navigate([id])
   }
 }

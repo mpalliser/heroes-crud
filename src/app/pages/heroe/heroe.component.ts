@@ -1,8 +1,10 @@
-import { Component, inject } from '@angular/core'
+import { Component, OnInit, inject } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { ActivatedRoute, Router } from '@angular/router'
 import { FormComponent } from '../../components/form/form.component'
+import { HeroeService } from '../../services/heroe.service'
+import { Heroe } from '../../models/heroe'
 
 @Component({
   selector: 'app-heroe',
@@ -11,13 +13,27 @@ import { FormComponent } from '../../components/form/form.component'
   templateUrl: './heroe.component.html',
   styleUrl: './heroe.component.sass',
 })
-export class HeroeComponent {
+export class HeroeComponent implements OnInit {
   public title: string | undefined = inject(ActivatedRoute).snapshot.title
+
+  public heroe!: Heroe
+
+  private id: string | null = inject(ActivatedRoute).snapshot.paramMap.get('id')
+
+  private heroeService = inject(HeroeService)
 
   private router = inject(Router)
   // private readonly route = inject(ActivatedRoute).snapshot.paramMap.get('id')
 
   public goToHeroes(): void {
     this.router.navigate([''])
+  }
+
+  ngOnInit(): void {
+    if (this.id) {
+      this.heroeService.getById(this.id).subscribe((heroe: Heroe) => {
+        this.heroe = heroe
+      })
+    }
   }
 }
