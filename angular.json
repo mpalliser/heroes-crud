@@ -20,6 +20,7 @@
             "outputPath": "dist/heroes-crud",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/heroes/",
             "polyfills": [
               "zone.js"
             ],
@@ -31,6 +32,7 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/bulma/css/bulma.min.css",
               "src/styles.sass"
             ],
             "scripts": []

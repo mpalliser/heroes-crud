@@ -27,8 +27,12 @@
       Acciones
     </th>
     <td mat-cell *matCellDef="let row">
-      <mat-icon class="color-info">edit</mat-icon>
-      <mat-icon class="color-delete">delete</mat-icon>
+      <button mat-icon-button (click)="onClickEdit.emit(row.id)">
+        <mat-icon class="color-info">edit</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon class="color-delete">delete</mat-icon>
+      </button>
     </td>
   </ng-container>
 
