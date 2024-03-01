@@ -1,0 +1,1 @@
+import{X as o,j as e}from"./chunk-CBIIK22F.js";var c=(()=>{let t=class t{constructor(){this.isLoadingBS=new e(!1)}get isLoading(){return this.isLoadingBS.asObservable()}show(){this.isLoadingBS.next(!0)}hide(){this.isLoadingBS.next(!1)}};t.\u0275fac=function(r){return new(r||t)},t.\u0275prov=o({token:t,factory:t.\u0275fac,providedIn:"root"});let i=t;return i})();export{c as a};
