@@ -25,12 +25,12 @@ export class FormComponent {
     this.initForm(heroe)
   }
 
-  @Output() onCreateEvent = new EventEmitter<unknown>()
+  @Output() onCreateEvent = new EventEmitter<string>()
 
   private readonly formBuilder = inject(FormBuilder)
 
   public submit(): void {
-    this.onCreateEvent.emit(this.formGroup.value)
+    this.onCreateEvent.emit(this.formGroup.get('name')?.value)
   }
 
   private initForm(heroe?: Heroe): void {

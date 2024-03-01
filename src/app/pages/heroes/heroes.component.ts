@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { Router } from '@angular/router'
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
 import { FilterComponent } from '../../components/filter/filter.component'
 import { ListComponent } from '../../components/list/list.component'
 import { Heroe } from '../../models/heroe'
@@ -10,7 +11,7 @@ import { BreadcrumbsComponent } from '../../components/breadcrumbs/breadcrumbs.c
 @Component({
   selector: 'app-heroes',
   standalone: true,
-  imports: [FilterComponent, ListComponent, MatButtonModule, BreadcrumbsComponent],
+  imports: [FilterComponent, ListComponent, MatButtonModule, BreadcrumbsComponent, MatSnackBarModule],
   template: `
     <div class="container">
       <app-breadcrumbs></app-breadcrumbs>
@@ -18,7 +19,7 @@ import { BreadcrumbsComponent } from '../../components/breadcrumbs/breadcrumbs.c
         <app-filter (onFilterChanges)="filterHeroes($event)"></app-filter>
         <button mat-raised-button color="primary" (click)="goToNewHero()">Nuevo heroe</button>
       </div>
-      <app-list (onClickEdit)="goToEditHero($event)" [heroes]="heroes"></app-list>
+      <app-list (onClickEdit)="goToEditHero($event)" (onDelete)="deleteHero($event)" [heroes]="heroes"></app-list>
     </div>
   `,
 })
@@ -29,8 +30,13 @@ export class HeroesComponent {
 
   private readonly router = inject(Router)
 
+  private readonly snackBar = inject(MatSnackBar)
+
+  private lastFilter = ''
+
   public filterHeroes(filter: string): void {
     this.heroes = []
+    this.lastFilter = filter
     this.heroeService.filterHeroes(filter).subscribe((heroes: Heroe[]) => {
       this.heroes = heroes
     })
@@ -42,5 +48,10 @@ export class HeroesComponent {
 
   public goToEditHero(id: string): void {
     this.router.navigate([id])
+  }
+
+  public deleteHero(heroe: Heroe): void {
+    this.snackBar.open(`Heroe ${heroe.name} 'eliminado' satisfactoriamente`, 'Cerrar', { duration: 2000 })
+    this.filterHeroes(this.lastFilter)
   }
 }

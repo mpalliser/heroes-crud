@@ -36,8 +36,8 @@ export class HeroeComponent {
     this.router.navigate([''])
   }
 
-  public onCreate(): void {
-    this.snackBar.open(`Heroe ${this.heroe.id ? 'actualizado' : 'creado'} satisfactoriamente`, 'Cerrar')
+  public onCreate(name: string): void {
+    this.snackBar.open(`Heroe ${name} ${name ? 'actualizado' : 'creado'} satisfactoriamente`, 'Cerrar', { duration: 2000 })
     this.goToHeroes()
   }
 }

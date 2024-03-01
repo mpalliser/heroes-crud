@@ -39,7 +39,7 @@ export class FilterComponent implements OnInit, OnDestroy {
         debounceTime(300),
       ).subscribe((value: string) => this.onFilterChanges.emit(value))
 
-    this.formControl.setValue('bat') // set to obtain initial data
+    this.formControl.setValue('bat') // set to obtain initial data, api doesn't return heroes with empty value
   }
 
   ngOnDestroy(): void {
