@@ -73,7 +73,7 @@
               "buildTarget": "heroes-crud:build:production"
             },
             "development": {
-              "buildTarget": "heroes-crud:build:development",
+              "buildTarget": "heroes-crud:build:development"
             }
           },
           "defaultConfiguration": "development"
