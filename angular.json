@@ -20,7 +20,6 @@
             "outputPath": "dist/heroes-crud",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "baseHref": "/heroes/",
             "polyfills": [
               "zone.js"
             ],
@@ -69,7 +68,6 @@
             },
             "development": {
               "buildTarget": "heroes-crud:build:development",
-              "proxyConfig": "proxy.conf.js"
             }
           },
           "defaultConfiguration": "development"
@@ -99,6 +97,9 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
