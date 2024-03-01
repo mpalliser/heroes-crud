@@ -13,7 +13,17 @@ import {
   selector: 'app-filter',
   standalone: true,
   imports: [MatInputModule, FormsModule, ReactiveFormsModule, MatIconModule, MatButtonModule],
-  templateUrl: 'filter.component.html',
+  template: `
+    <mat-form-field>
+      <mat-label>Filtro</mat-label>
+      <input matInput type="text" [formControl]="formControl">
+      @if (formControl.value) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="formControl.reset()">
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+  `,
 })
 export class FilterComponent implements OnInit, OnDestroy {
   public readonly formControl = new FormControl<string>('', { nonNullable: true })

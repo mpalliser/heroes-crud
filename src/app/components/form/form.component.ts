@@ -27,12 +27,14 @@ export class FormComponent {
 
   @Output() onCreateEvent = new EventEmitter<unknown>()
 
+  private readonly formBuilder = inject(FormBuilder)
+
   public submit(): void {
     this.onCreateEvent.emit(this.formGroup.value)
   }
 
   private initForm(heroe?: Heroe): void {
-    this.formGroup = inject(FormBuilder).group({
+    this.formGroup = this.formBuilder.group({
       id: [heroe?.id ?? null, [Validators.required]],
       name: [heroe?.name ?? '', [Validators.required]],
       'eye-color': [heroe?.appearance['eye-color'] ?? '', [Validators.required]],

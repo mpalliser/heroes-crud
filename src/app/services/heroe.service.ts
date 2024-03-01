@@ -26,7 +26,6 @@ export class HeroeService {
   }
 
   filterHeroes(filter: string): Observable<Heroe[]> {
-    console.log('hi')
     return this.httpClient.get<ApiResponse>(`${this.url}/search/${filter}`).pipe(
       map(data => (data.response === ApiResponseStatus.SUCCESS
         ? data.results

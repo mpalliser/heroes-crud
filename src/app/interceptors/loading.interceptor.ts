@@ -8,7 +8,5 @@ import { LoadingService } from '../services/loading.service'
 
 export const loadingInterceptor: HttpInterceptorFn = (request: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> => {
   inject(LoadingService).show()
-  return next(request).pipe(
-    finalize(() => inject(LoadingService).hide()),
-  )
+  return next(request).pipe(finalize(() => inject(LoadingService).hide()))
 }
