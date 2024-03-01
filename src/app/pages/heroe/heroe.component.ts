@@ -22,26 +22,20 @@ export class HeroeComponent implements OnInit {
 
   private readonly id: string | null = inject(ActivatedRoute).snapshot.paramMap.get('id')
 
-  private readonly heroeService = inject(HeroeService)
-
-  private readonly snackBar = inject(MatSnackBar)
-
-  private readonly router = inject(Router)
-
   ngOnInit(): void {
     if (this.id) {
-      this.heroeService.getById(this.id).subscribe((heroe: Heroe) => {
+      inject(HeroeService).getById(this.id).subscribe((heroe: Heroe) => {
         this.heroe = heroe
       })
     }
   }
 
   public goToHeroes(): void {
-    this.router.navigate([''])
+    inject(Router).navigate([''])
   }
 
   public onCreate(formValue: unknown): void {
-    this.snackBar.open(`Heroe ${this.id ? 'actualizado' : 'creado'} satisfactoriamente`, 'Cerrar')
+    inject(MatSnackBar).open(`Heroe ${this.id ? 'actualizado' : 'creado'} satisfactoriamente`, 'Cerrar')
     this.goToHeroes()
   }
 }
