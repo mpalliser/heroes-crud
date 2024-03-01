@@ -1,7 +1,7 @@
 <form class="example-form" [formGroup]="formGroup" class="columns is-multiline">
   <mat-form-field class="column is-4">
     <mat-label>Nombre</mat-label>
-    <input matInput formControlName="name">
+    <input matInput formControlName="name" appUpperCase>
     <button *ngIf="formGroup.get('name')?.value" mat-icon-button matSuffix (click)="formGroup.get('name')?.reset()">
       <mat-icon>close</mat-icon>
     </button>

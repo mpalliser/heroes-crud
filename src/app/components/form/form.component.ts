@@ -11,11 +11,12 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { Heroe } from '../../models/heroe'
+import { UpperCaseDirective } from '../upper-case/upper-case.directive'
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [CommonModule, MatInputModule, ReactiveFormsModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatInputModule, ReactiveFormsModule, MatButtonModule, MatIconModule, UpperCaseDirective],
   templateUrl: './form.component.html',
 })
 export class FormComponent {
