@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable, map } from 'rxjs'
-import { Heroe } from '../models/heroe'
-import { environment } from '../../environments/environment.development'
+import { environment } from '@environments/environment.development'
+import { Heroe } from '@models/heroe'
 
 enum ApiResponseStatus {
   SUCCESS = 'success',

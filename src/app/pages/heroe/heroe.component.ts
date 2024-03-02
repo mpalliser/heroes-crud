@@ -3,10 +3,10 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
 import { ActivatedRoute, Router } from '@angular/router'
-import { BreadcrumbsComponent } from '../../components/breadcrumbs/breadcrumbs.component'
-import { FormComponent } from '../../components/form/form.component'
-import { Heroe } from '../../models/heroe'
-import { HeroeService } from '../../services/heroe.service'
+import { BreadcrumbsComponent } from '@components/breadcrumbs/breadcrumbs.component'
+import { FormComponent } from '@components/form/form.component'
+import { Heroe } from '@models/heroe'
+import { HeroeService } from '@services/heroe.service'
 
 @Component({
   selector: 'app-heroe',

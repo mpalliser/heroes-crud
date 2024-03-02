@@ -7,7 +7,7 @@ import {
   MatDialogContent,
   MatDialogTitle,
 } from '@angular/material/dialog'
-import { Heroe } from '../../models/heroe'
+import { Heroe } from '@models/heroe'
 
 @Component({
   selector: 'confirm-dialog',

@@ -8,8 +8,8 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator'
 import { MatTableDataSource, MatTableModule } from '@angular/material/table'
 import { filter } from 'rxjs'
-import { Heroe } from '../../models/heroe'
-import { LoadingService } from '../../services/loading.service'
+import { Heroe } from '@models/heroe'
+import { LoadingService } from '@services/loading.service'
 import { ConfirmDialog } from '../confirm-dialog/confirm.dialog.component'
 
 @Component({

@@ -10,8 +10,8 @@ import {
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
-import { Heroe } from '../../models/heroe'
-import { UpperCaseDirective } from '../upper-case/upper-case.directive'
+import { Heroe } from '@models/heroe'
+import { UpperCaseDirective } from '@directives/upper-case.directive'
 
 @Component({
   selector: 'app-form',
@@ -38,11 +38,7 @@ export class FormComponent {
     this.formGroup = this.formBuilder.group({
       id: [heroe?.id ?? null, [Validators.required]],
       name: [heroe?.name ?? '', [Validators.required]],
-      'eye-color': [heroe?.appearance['eye-color'] ?? '', [Validators.required]],
-      'hair-color': [heroe?.appearance['hair-color'] ?? '', [Validators.required]],
-      height: [heroe?.appearance.height[1] ?? '', [Validators.required]],
-      race: [heroe?.appearance.race ?? '', [Validators.required]],
-      weight: [heroe?.appearance.weight[1] ?? '', [Validators.required]],
+      image: [{ value: heroe?.image?.url ?? '', disabled: true }],
     })
   }
 }

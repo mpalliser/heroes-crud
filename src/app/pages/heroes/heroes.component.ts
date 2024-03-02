@@ -2,11 +2,11 @@ import { Component, inject } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { Router } from '@angular/router'
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
-import { FilterComponent } from '../../components/filter/filter.component'
-import { ListComponent } from '../../components/list/list.component'
-import { Heroe } from '../../models/heroe'
-import { HeroeService } from '../../services/heroe.service'
-import { BreadcrumbsComponent } from '../../components/breadcrumbs/breadcrumbs.component'
+import { FilterComponent } from '@components/filter/filter.component'
+import { ListComponent } from '@components/list/list.component'
+import { Heroe } from '@models/heroe'
+import { HeroeService } from '@services/heroe.service'
+import { BreadcrumbsComponent } from '@components/breadcrumbs/breadcrumbs.component'
 
 @Component({
   selector: 'app-heroes',
